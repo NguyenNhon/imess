@@ -13,6 +13,8 @@
         <scene sceneID="MJo-zY-qfa">
             <objects>
                 <navigationController id="sn1-gi-ndq" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="384" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oK0-kb-34U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -34,11 +36,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l25-hr-ALs">
-                                <rect key="frame" x="163" y="419" width="48" height="30"/>
+                                <rect key="frame" x="168" y="419" width="48" height="30"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
                                     <action selector="signOutGoogleAccount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="10U-8y-9Fp"/>
@@ -63,7 +65,7 @@
         <!--Groups-->
         <scene sceneID="GAS-n7-OgB">
             <objects>
-                <viewController id="ziL-ZU-kmR" sceneMemberID="viewController">
+                <viewController id="ziL-ZU-kmR" customClass="GroupViewController" customModule="imess" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qku-k5-kIe"/>
                         <viewControllerLayoutGuide type="bottom" id="hpK-DK-vuY"/>
@@ -82,7 +84,7 @@
         <!--Friends-->
         <scene sceneID="J7D-zm-IJE">
             <objects>
-                <viewController id="NFV-0g-ssM" sceneMemberID="viewController">
+                <viewController id="NFV-0g-ssM" customClass="FriendViewController" customModule="imess" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gxF-Rk-I24"/>
                         <viewControllerLayoutGuide type="bottom" id="oLz-NZ-lZ1"/>
@@ -98,10 +100,67 @@
             </objects>
             <point key="canvasLocation" x="2511" y="-61"/>
         </scene>
+        <!--Add Friend View Controller-->
+        <scene sceneID="Stc-eO-YJK">
+            <objects>
+                <viewController storyboardIdentifier="addFriendViewController" id="DKl-Uq-nib" customClass="AddFriendViewController" customModule="imess" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oRU-Nk-5LR"/>
+                        <viewControllerLayoutGuide type="bottom" id="aW9-gh-3Gu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="36f-Ab-YfS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcY-3X-ukW">
+                                <rect key="frame" x="20" y="40" width="335" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search email..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6e4-g2-a9a">
+                                        <rect key="frame" x="0.0" y="0.0" width="289" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A49-Sk-Uhu">
+                                        <rect key="frame" x="289" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="clickSearch:" destination="DKl-Uq-nib" eventType="touchUpInside" id="3Ge-dA-x6t"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6e4-g2-a9a" firstAttribute="top" secondItem="xcY-3X-ukW" secondAttribute="top" id="51D-2n-wWC"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l2Z-Nt-EcX">
+                                <rect key="frame" x="20" y="80" width="335" height="567"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l2Z-Nt-EcX" firstAttribute="top" secondItem="xcY-3X-ukW" secondAttribute="bottom" constant="10" id="Aed-Dr-eDy"/>
+                            <constraint firstItem="aW9-gh-3Gu" firstAttribute="top" secondItem="l2Z-Nt-EcX" secondAttribute="bottom" constant="20" id="IXX-69-pi5"/>
+                            <constraint firstAttribute="trailing" secondItem="l2Z-Nt-EcX" secondAttribute="trailing" constant="20" id="KKa-Bo-FBy"/>
+                            <constraint firstAttribute="trailing" secondItem="xcY-3X-ukW" secondAttribute="trailing" constant="20" id="OKE-x3-KZv"/>
+                            <constraint firstItem="xcY-3X-ukW" firstAttribute="leading" secondItem="36f-Ab-YfS" secondAttribute="leading" constant="20" id="QGx-03-BDB"/>
+                            <constraint firstItem="xcY-3X-ukW" firstAttribute="top" secondItem="oRU-Nk-5LR" secondAttribute="bottom" constant="20" id="Uga-ZE-OGs"/>
+                            <constraint firstItem="l2Z-Nt-EcX" firstAttribute="leading" secondItem="36f-Ab-YfS" secondAttribute="leading" constant="20" id="sTQ-En-Mwj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchTextField" destination="6e4-g2-a9a" id="qgI-j5-13s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cx6-18-aYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3269.5999999999999" y="-62.518740629685162"/>
+        </scene>
         <!--Recent-->
         <scene sceneID="Wez-kS-k1t">
             <objects>
-                <viewController id="1Ku-eN-46E" sceneMemberID="viewController">
+                <viewController id="1Ku-eN-46E" customClass="RecentViewController" customModule="imess" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bS0-WM-mj1"/>
                         <viewControllerLayoutGuide type="bottom" id="jSk-2K-jNZ"/>

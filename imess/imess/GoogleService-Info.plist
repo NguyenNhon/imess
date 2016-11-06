@@ -2,27 +2,41 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>571805473570-gv9ttso5rhjgiqj24gcfjrui0m1u1jvo.apps.googleusercontent.com</string>
+	<string>277372206319-piecdsbt8urj7b1jbmvbhdos6mhkqv3e.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.571805473570-gv9ttso5rhjgiqj24gcfjrui0m1u1jvo</string>
+	<string>com.googleusercontent.apps.277372206319-piecdsbt8urj7b1jbmvbhdos6mhkqv3e</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>277372206319-2lht7gtmuj0l2mgq6g3nn02o5h1mbbe2.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC2nsnvwSYQdj22t3m0WNXzj68vbl8_O14</string>
+	<key>GCM_SENDER_ID</key>
+	<string>277372206319</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.haloteam.imess</string>
 	<key>PROJECT_ID</key>
-	<string>firebase-imess</string>
+	<string>imess-eaa69</string>
+	<key>STORAGE_BUCKET</key>
+	<string>imess-eaa69.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:571805473570:ios:a7dda6361def498b</string>
+	<string>1:277372206319:ios:a7dda6361def498b</string>
+	<key>DATABASE_URL</key>
+	<string>https://imess-eaa69.firebaseio.com</string>
 </dict>
 </plist>

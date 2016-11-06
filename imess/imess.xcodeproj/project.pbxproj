@@ -7,7 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		241ADD7B79023E53439CCE07 /* libPods-imess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE0DE740F66AE26E131C8E7 /* libPods-imess.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		1916E2FE8035BFE20B2999D6 /* libPods-imess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E446F5509CE314B2BE0816 /* libPods-imess.a */; };
+		EF02CE461DC994A900A6ED31 /* ic_groups.png in Resources */ = {isa = PBXBuildFile; fileRef = EF02CE431DC994A900A6ED31 /* ic_groups.png */; };
+		EF02CE471DC994A900A6ED31 /* ic_recent.png in Resources */ = {isa = PBXBuildFile; fileRef = EF02CE441DC994A900A6ED31 /* ic_recent.png */; };
+		EF02CE481DC994A900A6ED31 /* ic_user.png in Resources */ = {isa = PBXBuildFile; fileRef = EF02CE451DC994A900A6ED31 /* ic_user.png */; };
+		EF02CE4C1DC9B7A000A6ED31 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CE4A1DC9B7A000A6ED31 /* ActionButton.swift */; };
+		EF02CE4D1DC9B7A000A6ED31 /* ActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CE4B1DC9B7A000A6ED31 /* ActionButtonItem.swift */; };
+		EF02CE501DC9BEEB00A6ED31 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CE4F1DC9BEEB00A6ED31 /* RecentViewController.swift */; };
+		EF02CE521DC9C3D600A6ED31 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CE511DC9C3D600A6ED31 /* GroupViewController.swift */; };
+		EF02CE541DC9FC2C00A6ED31 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CE531DC9FC2C00A6ED31 /* FriendViewController.swift */; };
+		EF0ABEEA1DCF8C8000DEC577 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0ABEE91DCF8C8000DEC577 /* User.swift */; };
+		EF0DCC101DCDB02E0013F894 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DCC0F1DCDB02E0013F894 /* search.png */; };
+		EF602C1C1DCDD0B9005D2F52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF602C1B1DCDD0B9005D2F52 /* GoogleService-Info.plist */; };
+		EF93C31A1DCA3E4A00C1B1F4 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */; };
 		EFB9251D1DC64B1000AC3A0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9251C1DC64B1000AC3A0D /* AppDelegate.swift */; };
 		EFB9251F1DC64B1000AC3A0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9251E1DC64B1000AC3A0D /* ViewController.swift */; };
 		EFB925221DC64B1000AC3A0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFB925201DC64B1000AC3A0D /* Main.storyboard */; };
@@ -15,16 +27,24 @@
 		EFB925271DC64B1000AC3A0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFB925251DC64B1000AC3A0D /* LaunchScreen.storyboard */; };
 		EFB925311DC64DDA00AC3A0D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EFB925301DC64DDA00AC3A0D /* Podfile */; };
 		EFD31F5E1DC71CF1007D6DAA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD31F5D1DC71CF1007D6DAA /* HomeViewController.swift */; };
-		EFD31F631DC73B24007D6DAA /* ic_groups.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD31F601DC73B24007D6DAA /* ic_groups.png */; };
-		EFD31F641DC73B24007D6DAA /* ic_recent.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD31F611DC73B24007D6DAA /* ic_recent.png */; };
-		EFD31F651DC73B24007D6DAA /* ic_user.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD31F621DC73B24007D6DAA /* ic_user.png */; };
-		EFD31F731DC7564C007D6DAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFD31F721DC7564C007D6DAA /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		621EA69904F4A6165E9EC925 /* Pods-imess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imess.debug.xcconfig"; path = "Pods/Target Support Files/Pods-imess/Pods-imess.debug.xcconfig"; sourceTree = "<group>"; };
-		CDE0DE740F66AE26E131C8E7 /* libPods-imess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-imess.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80E446F5509CE314B2BE0816 /* libPods-imess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-imess.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E239E7ADEF6B73D028D26850 /* Pods-imess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imess.release.xcconfig"; path = "Pods/Target Support Files/Pods-imess/Pods-imess.release.xcconfig"; sourceTree = "<group>"; };
+		EF02CE431DC994A900A6ED31 /* ic_groups.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_groups.png; path = imess/Resource/ic_groups.png; sourceTree = "<group>"; };
+		EF02CE441DC994A900A6ED31 /* ic_recent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_recent.png; path = imess/Resource/ic_recent.png; sourceTree = "<group>"; };
+		EF02CE451DC994A900A6ED31 /* ic_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_user.png; path = imess/Resource/ic_user.png; sourceTree = "<group>"; };
+		EF02CE4A1DC9B7A000A6ED31 /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionButton.swift; path = ActionButton/ActionButton.swift; sourceTree = "<group>"; };
+		EF02CE4B1DC9B7A000A6ED31 /* ActionButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionButtonItem.swift; path = ActionButton/ActionButtonItem.swift; sourceTree = "<group>"; };
+		EF02CE4F1DC9BEEB00A6ED31 /* RecentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
+		EF02CE511DC9C3D600A6ED31 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		EF02CE531DC9FC2C00A6ED31 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		EF0ABEE91DCF8C8000DEC577 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EF0DCC0F1DCDB02E0013F894 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = imess/Resource/search.png; sourceTree = "<group>"; };
+		EF602C1B1DCDD0B9005D2F52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		EFB925191DC64B1000AC3A0D /* imess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB9251C1DC64B1000AC3A0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFB9251E1DC64B1000AC3A0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,10 +54,6 @@
 		EFB925281DC64B1000AC3A0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFB925301DC64DDA00AC3A0D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EFD31F5D1DC71CF1007D6DAA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		EFD31F601DC73B24007D6DAA /* ic_groups.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_groups.png; path = "../../../../WorkSpaceAndroid/imess/app/src/main/res/drawable-hdpi/ic_groups.png"; sourceTree = "<group>"; };
-		EFD31F611DC73B24007D6DAA /* ic_recent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_recent.png; path = "../../../../WorkSpaceAndroid/imess/app/src/main/res/drawable-hdpi/ic_recent.png"; sourceTree = "<group>"; };
-		EFD31F621DC73B24007D6DAA /* ic_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_user.png; path = "../../../../WorkSpaceAndroid/imess/app/src/main/res/drawable-hdpi/ic_user.png"; sourceTree = "<group>"; };
-		EFD31F721DC7564C007D6DAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "imess/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				241ADD7B79023E53439CCE07 /* libPods-imess.a in Frameworks */,
+				1916E2FE8035BFE20B2999D6 /* libPods-imess.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +71,7 @@
 		0104324CE9299F2CB6B5D46D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CDE0DE740F66AE26E131C8E7 /* libPods-imess.a */,
+				80E446F5509CE314B2BE0816 /* libPods-imess.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -69,10 +85,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EF02CE491DC9B79200A6ED31 /* ActionButton */ = {
+			isa = PBXGroup;
+			children = (
+				EF02CE4A1DC9B7A000A6ED31 /* ActionButton.swift */,
+				EF02CE4B1DC9B7A000A6ED31 /* ActionButtonItem.swift */,
+			);
+			name = ActionButton;
+			sourceTree = "<group>";
+		};
+		EF02CE4E1DC9BBB500A6ED31 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		EFB925101DC64B1000AC3A0D = {
 			isa = PBXGroup;
 			children = (
-				EFD31F721DC7564C007D6DAA /* GoogleService-Info.plist */,
 				EFD31F5F1DC73AE1007D6DAA /* Resource */,
 				EFB925301DC64DDA00AC3A0D /* Podfile */,
 				EFB9251B1DC64B1000AC3A0D /* imess */,
@@ -93,6 +124,7 @@
 		EFB9251B1DC64B1000AC3A0D /* imess */ = {
 			isa = PBXGroup;
 			children = (
+				EF602C1B1DCDD0B9005D2F52 /* GoogleService-Info.plist */,
 				EFD31F5C1DC71CB5007D6DAA /* swift */,
 				EFB9251C1DC64B1000AC3A0D /* AppDelegate.swift */,
 				EFB9251E1DC64B1000AC3A0D /* ViewController.swift */,
@@ -107,6 +139,7 @@
 		EFD31F5C1DC71CB5007D6DAA /* swift */ = {
 			isa = PBXGroup;
 			children = (
+				EF02CE4E1DC9BBB500A6ED31 /* Utility */,
 				EFD31F701DC74B17007D6DAA /* Controller */,
 				EFD31F6F1DC74B0F007D6DAA /* View */,
 				EFD31F6E1DC74B09007D6DAA /* Model */,
@@ -117,9 +150,10 @@
 		EFD31F5F1DC73AE1007D6DAA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				EFD31F601DC73B24007D6DAA /* ic_groups.png */,
-				EFD31F611DC73B24007D6DAA /* ic_recent.png */,
-				EFD31F621DC73B24007D6DAA /* ic_user.png */,
+				EF0DCC0F1DCDB02E0013F894 /* search.png */,
+				EF02CE431DC994A900A6ED31 /* ic_groups.png */,
+				EF02CE441DC994A900A6ED31 /* ic_recent.png */,
+				EF02CE451DC994A900A6ED31 /* ic_user.png */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -127,6 +161,7 @@
 		EFD31F6C1DC74AE8007D6DAA /* RecentViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EF02CE4F1DC9BEEB00A6ED31 /* RecentViewController.swift */,
 			);
 			name = RecentViewController;
 			sourceTree = "<group>";
@@ -134,6 +169,7 @@
 		EFD31F6D1DC74AF5007D6DAA /* GroupViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EF02CE511DC9C3D600A6ED31 /* GroupViewController.swift */,
 			);
 			name = GroupViewController;
 			sourceTree = "<group>";
@@ -141,6 +177,7 @@
 		EFD31F6E1DC74B09007D6DAA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EF0ABEE91DCF8C8000DEC577 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -148,6 +185,7 @@
 		EFD31F6F1DC74B0F007D6DAA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EF02CE491DC9B79200A6ED31 /* ActionButton */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -166,6 +204,8 @@
 		EFD31F711DC74B39007D6DAA /* FriendViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EF02CE531DC9FC2C00A6ED31 /* FriendViewController.swift */,
+				EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */,
 			);
 			name = FriendViewController;
 			sourceTree = "<group>";
@@ -233,14 +273,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFD31F651DC73B24007D6DAA /* ic_user.png in Resources */,
-				EFD31F731DC7564C007D6DAA /* GoogleService-Info.plist in Resources */,
+				EF02CE481DC994A900A6ED31 /* ic_user.png in Resources */,
+				EF0DCC101DCDB02E0013F894 /* search.png in Resources */,
+				EF602C1C1DCDD0B9005D2F52 /* GoogleService-Info.plist in Resources */,
 				EFB925271DC64B1000AC3A0D /* LaunchScreen.storyboard in Resources */,
+				EF02CE471DC994A900A6ED31 /* ic_recent.png in Resources */,
 				EFB925241DC64B1000AC3A0D /* Assets.xcassets in Resources */,
-				EFD31F641DC73B24007D6DAA /* ic_recent.png in Resources */,
 				EFB925311DC64DDA00AC3A0D /* Podfile in Resources */,
 				EFB925221DC64B1000AC3A0D /* Main.storyboard in Resources */,
-				EFD31F631DC73B24007D6DAA /* ic_groups.png in Resources */,
+				EF02CE461DC994A900A6ED31 /* ic_groups.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,8 +341,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFB9251F1DC64B1000AC3A0D /* ViewController.swift in Sources */,
+				EF02CE4D1DC9B7A000A6ED31 /* ActionButtonItem.swift in Sources */,
+				EF93C31A1DCA3E4A00C1B1F4 /* AddFriendViewController.swift in Sources */,
 				EFB9251D1DC64B1000AC3A0D /* AppDelegate.swift in Sources */,
+				EF02CE501DC9BEEB00A6ED31 /* RecentViewController.swift in Sources */,
+				EF02CE541DC9FC2C00A6ED31 /* FriendViewController.swift in Sources */,
 				EFD31F5E1DC71CF1007D6DAA /* HomeViewController.swift in Sources */,
+				EF02CE4C1DC9B7A000A6ED31 /* ActionButton.swift in Sources */,
+				EF0ABEEA1DCF8C8000DEC577 /* User.swift in Sources */,
+				EF02CE521DC9C3D600A6ED31 /* GroupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +393,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -395,6 +444,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

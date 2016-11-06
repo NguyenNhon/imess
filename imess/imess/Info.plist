@@ -23,7 +23,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.571805473570-gv9ttso5rhjgiqj24gcfjrui0m1u1jvo</string>
+				<string>com.googleusercontent.apps.277372206319-piecdsbt8urj7b1jbmvbhdos6mhkqv3e</string>
 			</array>
 		</dict>
 		<dict>
@@ -37,6 +37,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<string>YES</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

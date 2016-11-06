@@ -9,6 +9,9 @@
 import UIKit
 import Google
 import GoogleSignIn
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
@@ -47,8 +50,31 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             print(error)
             return
         }
+        
+        let authentication = user.authentication
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!, accessToken:(authentication?.accessToken)!)
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            if error != nil{
+                
+                return;
+            }
+            if user != nil {
+                
+            }
+        })
+        
+        FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
+            if user != nil {
+                let uid = user?.uid as String!
+                let ref : FIRDatabaseReference = FIRDatabase.database().reference().child("users/\(uid!)")
+                ref.setValue(["name" : user?.displayName!, "email" : user?.email!, "photoUrl" : user?.photoURL?.path, "id" : uid!])
+            }
+        })
+        
         let storyboard = self.storyboard?.instantiateViewController(withIdentifier: "homeView")
         self.navigationController?.pushViewController(storyboard!, animated: true)
     }
+    
+    
 }
 
