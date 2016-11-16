@@ -16,24 +16,50 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var searchTextField: UITextField!
     var firebaseDatabaseReference : FIRDatabaseReference!
-    var userCurrent : FIRUser!
+    //var userCurrent : FIRUser!
     var listUsers : [User]!
+    var listOldFriends : [User]!
     
     @IBOutlet weak var tvListUsers: UITableView!
+    
     @IBAction func clickSearch(_ sender: Any) {
-        self.listUsers.removeAll()
-        self.tvListUsers.reloadData()
         findFriends()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         firebaseDatabaseReference = FIRDatabase.database().reference()
         listUsers = []
+        //listOldFriends = findOldFriends()
         searchTextField.leftViewMode = 	UITextFieldViewMode.always
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: searchTextField.frame.height, height: searchTextField.frame.height))
         let image = UIImage(named: "search.png")
         imageView.image = image
         searchTextField.leftView = imageView
+    }
+    
+    func findOldFriends() -> [User] {
+        var oldFriends : [User] = []
+        let userCurrent = ViewController.UserCurrent
+        let test = userCurrent?.uid
+        print("\(test)")
+        let userRef = self.firebaseDatabaseReference.child("users").child("\(userCurrent?.uid)").child("friends")
+        userRef.observeSingleEvent(of: .value, with: {
+            snapshot in
+            if snapshot.value is NSNull {
+                print("Not found")
+            } else {
+                let enumerator = snapshot.children
+                while let rest = enumerator.nextObject() as? FIRDataSnapshot {
+                    let idFriend = (rest.value as? NSDictionary)?["id"]! as! String
+                    let nameFriend = (rest.value as? NSDictionary)?["name"]! as! String
+                    let photoUrlFriend = (rest.value as? NSDictionary)?["photoUrl"]! as! String
+                    let emailFriend = (rest.value as? NSDictionary)?["email"]! as! String
+                    oldFriends.append(User(name: nameFriend, email: emailFriend, id: idFriend, photoUrl: photoUrlFriend))
+                }
+            }
+        })
+        return oldFriends
     }
     
     func findFriends(){
@@ -51,14 +77,16 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
             } else {
                 //print("Co \(snapshot.childrenCount) users")
                 let enumerator = snapshot.children
+                self.listUsers.removeAll()
                 while let rest = enumerator.nextObject() as? FIRDataSnapshot {
-                        let idFriend = (rest.value as? NSDictionary)?["id"]! as! String
-                        let nameFriend = (rest.value as? NSDictionary)?["name"]! as! String
-                        let photoUrlFriend = (rest.value as? NSDictionary)?["photoUrl"]! as! String
-                        let emailFriend = (rest.value as? NSDictionary)?["email"]! as! String
-                        self.listUsers.append(User(name: nameFriend, email: emailFriend, id: idFriend, photoUrl: photoUrlFriend))
-                    self.tvListUsers.reloadData()
+                    let emailFriend = (rest.value as? NSDictionary)?["email"]! as! String
+                    let idFriend = (rest.value as? NSDictionary)?["id"]! as! String
+                    let nameFriend = (rest.value as? NSDictionary)?["name"]! as! String
+                    let photoUrlFriend = (rest.value as? NSDictionary)?["photoUrl"]! as! String
+                    self.listUsers.append(User(name: nameFriend, email: emailFriend, id: idFriend, photoUrl: photoUrlFriend))
+                    
                 }
+                self.tvListUsers.reloadData()
             }
         })
     }
@@ -76,7 +104,20 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             cell.profileName.text = self.listUsers[indexPath.row].name
             cell.profileEmail.text = self.listUsers[indexPath.row].email
+            
+            cell.dataProfileUid = self.listUsers[indexPath.row].id
+            cell.dataProfilePhotoUrl = self.listUsers[indexPath.row].photoUrl
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = self.tvListUsers.cellForRow(at: indexPath) as! CustomTableViewCell
+        let userCurrent = ViewController.UserCurrent
+        let uidCurrent = userCurrent?.uid
+        let uidFriend = cell.dataProfileUid
+        let refDatatase = FIRDatabase.database().reference().child("users").child("\(uidCurrent!)").child("friends").child("\(uidFriend!)")
+        refDatatase.setValue(["id": uidFriend!,"name": cell.profileName.text!, "email": cell.profileEmail.text!, "photoUrl": cell.dataProfilePhotoUrl!])
+        
     }
 }

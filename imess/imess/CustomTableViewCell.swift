@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import OneSignal
+import Firebase
+import FirebaseDatabase
 
 class CustomTableViewCell : UITableViewCell {
     
@@ -16,12 +19,15 @@ class CustomTableViewCell : UITableViewCell {
     
     @IBOutlet weak var profileEmail: UILabel!
     
+    var dataProfileUid: String? = nil
+    
+    var dataProfilePhotoUrl: String? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        print(self.profileEmail.text!)
     }
 }

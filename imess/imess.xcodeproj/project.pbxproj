@@ -187,7 +187,6 @@
 		EFD31F6F1DC74B0F007D6DAA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EFE8F55D1DD4C28B00030EAF /* FriendTab */,
 				EF02CE491DC9B79200A6ED31 /* ActionButton */,
 			);
 			name = View;
@@ -209,16 +208,9 @@
 			children = (
 				EF02CE531DC9FC2C00A6ED31 /* FriendViewController.swift */,
 				EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */,
-			);
-			name = FriendViewController;
-			sourceTree = "<group>";
-		};
-		EFE8F55D1DD4C28B00030EAF /* FriendTab */ = {
-			isa = PBXGroup;
-			children = (
 				EFE8F55E1DD4C2D900030EAF /* CustomTableViewCell.swift */,
 			);
-			name = FriendTab;
+			name = FriendViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +250,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 76A9EUF8Z3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

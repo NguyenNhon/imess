@@ -18,6 +18,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     @IBOutlet weak var signOutButton: UIButton!
     var signInButton : GIDSignInButton!
     
+    static var UserCurrent : FIRUser! = nil
+    
     @IBAction func signOutGoogleAccount(_ sender: Any) {
         GIDSignIn.sharedInstance().signOut()
     }
@@ -55,16 +57,13 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         let credential = FIRGoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!, accessToken:(authentication?.accessToken)!)
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil{
-                
                 return;
-            }
-            if user != nil {
-                
             }
         })
         
         FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
             if user != nil {
+                ViewController.UserCurrent = user
                 let uid = user?.uid as String!
                 let ref : FIRDatabaseReference = FIRDatabase.database().reference().child("users/\(uid!)")
                 ref.setValue(["name" : user?.displayName!, "email" : user?.email!, "photoUrl" : user?.photoURL?.path, "id" : uid!])
@@ -74,7 +73,5 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         let storyboard = self.storyboard?.instantiateViewController(withIdentifier: "homeView")
         self.navigationController?.pushViewController(storyboard!, animated: true)
     }
-    
-    
 }
 
