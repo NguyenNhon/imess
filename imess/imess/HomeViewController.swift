@@ -14,7 +14,7 @@ class HomeViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.delegate = self
+        //self.tabBarController?.delegate = self
         
 //        if self.tabBarController == nil {
 //            print("tab bar nil")

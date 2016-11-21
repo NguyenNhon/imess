@@ -27,6 +27,7 @@
 		EFB925241DC64B1000AC3A0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFB925231DC64B1000AC3A0D /* Assets.xcassets */; };
 		EFB925271DC64B1000AC3A0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFB925251DC64B1000AC3A0D /* LaunchScreen.storyboard */; };
 		EFB925311DC64DDA00AC3A0D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EFB925301DC64DDA00AC3A0D /* Podfile */; };
+		EFD114F01DE2F5F800C07007 /* CustomCellFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD114EF1DE2F5F800C07007 /* CustomCellFriend.swift */; };
 		EFD31F5E1DC71CF1007D6DAA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD31F5D1DC71CF1007D6DAA /* HomeViewController.swift */; };
 		EFE8F55F1DD4C2D900030EAF /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE8F55E1DD4C2D900030EAF /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		EFB925261DC64B1000AC3A0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFB925281DC64B1000AC3A0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFB925301DC64DDA00AC3A0D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EFD114EF1DE2F5F800C07007 /* CustomCellFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellFriend.swift; sourceTree = "<group>"; };
 		EFD31F5D1DC71CF1007D6DAA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EFE8F55E1DD4C2D900030EAF /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,21 @@
 			path = imess;
 			sourceTree = "<group>";
 		};
+		EFD114EC1DE2DD4F00C07007 /* ChatController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ChatController;
+			sourceTree = "<group>";
+		};
+		EFD114EE1DE2F5D600C07007 /* CellForFriend */ = {
+			isa = PBXGroup;
+			children = (
+				EFD114EF1DE2F5F800C07007 /* CustomCellFriend.swift */,
+			);
+			name = CellForFriend;
+			sourceTree = "<group>";
+		};
 		EFD31F5C1DC71CB5007D6DAA /* swift */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +215,7 @@
 		EFD31F701DC74B17007D6DAA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EFD114EC1DE2DD4F00C07007 /* ChatController */,
 				EFD31F711DC74B39007D6DAA /* FriendViewController */,
 				EFD31F6D1DC74AF5007D6DAA /* GroupViewController */,
 				EFD31F6C1DC74AE8007D6DAA /* RecentViewController */,
@@ -209,6 +227,7 @@
 		EFD31F711DC74B39007D6DAA /* FriendViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EFD114EE1DE2F5D600C07007 /* CellForFriend */,
 				EF02CE531DC9FC2C00A6ED31 /* FriendViewController.swift */,
 				EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */,
 				EFE8F55E1DD4C2D900030EAF /* CustomTableViewCell.swift */,
@@ -356,6 +375,7 @@
 				EF02CE4D1DC9B7A000A6ED31 /* ActionButtonItem.swift in Sources */,
 				EFE8F55F1DD4C2D900030EAF /* CustomTableViewCell.swift in Sources */,
 				EF93C31A1DCA3E4A00C1B1F4 /* AddFriendViewController.swift in Sources */,
+				EFD114F01DE2F5F800C07007 /* CustomCellFriend.swift in Sources */,
 				EFB9251D1DC64B1000AC3A0D /* AppDelegate.swift in Sources */,
 				EF02CE501DC9BEEB00A6ED31 /* RecentViewController.swift in Sources */,
 				EF02CE541DC9FC2C00A6ED31 /* FriendViewController.swift in Sources */,

@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dut-nS-tKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1498" y="144"/>
+            <point key="canvasLocation" x="1791" y="174"/>
         </scene>
         <!--Friends-->
         <scene sceneID="J7D-zm-IJE">
@@ -93,13 +93,90 @@
                     <view key="view" contentMode="scaleToFill" id="7hZ-hI-6Ge">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="AYH-45-Jwr">
+                                <rect key="frame" x="0.0" y="30" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Xxn-dK-6PE"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="NFV-0g-ssM" id="Mm9-Pb-PcZ"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Br-7X-jV2">
+                                <rect key="frame" x="0.0" y="79" width="375" height="539"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" textLabel="Vq1-PX-YQD" detailTextLabel="nli-v8-Qpc" imageView="9g2-et-gL7" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="9dQ-SX-m0S" customClass="CustomCellFriend" customModule="imess" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9dQ-SX-m0S" id="qsd-kd-FqL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vq1-PX-YQD">
+                                                    <rect key="frame" x="66" y="12" width="34" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nli-v8-Qpc">
+                                                    <rect key="frame" x="66" y="33" width="44" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="ic_groups.png" id="9g2-et-gL7">
+                                                    <rect key="frame" x="15" y="11" width="36" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="profileEmail" destination="nli-v8-Qpc" id="Xy5-KA-vTl"/>
+                                            <outlet property="profileName" destination="Vq1-PX-YQD" id="l56-eg-cWV"/>
+                                            <outlet property="profilePicture" destination="9g2-et-gL7" id="1sC-D6-0yL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="NFV-0g-ssM" id="4p9-NU-Gay"/>
+                                    <outlet property="delegate" destination="NFV-0g-ssM" id="pBv-RC-hbI"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AYH-45-Jwr" firstAttribute="leading" secondItem="7hZ-hI-6Ge" secondAttribute="leading" id="30g-3k-rzt"/>
+                            <constraint firstItem="AYH-45-Jwr" firstAttribute="top" secondItem="gxF-Rk-I24" secondAttribute="bottom" constant="10" id="3C7-6i-IPx"/>
+                            <constraint firstAttribute="trailing" secondItem="AYH-45-Jwr" secondAttribute="trailing" id="BYs-Zz-d7g"/>
+                            <constraint firstAttribute="trailing" secondItem="4Br-7X-jV2" secondAttribute="trailing" id="JEt-ls-E7r"/>
+                            <constraint firstItem="4Br-7X-jV2" firstAttribute="leading" secondItem="7hZ-hI-6Ge" secondAttribute="leading" id="ds5-U3-LFl"/>
+                            <constraint firstItem="oLz-NZ-lZ1" firstAttribute="top" secondItem="4Br-7X-jV2" secondAttribute="bottom" id="gqD-Ld-mhR"/>
+                            <constraint firstItem="4Br-7X-jV2" firstAttribute="top" secondItem="AYH-45-Jwr" secondAttribute="bottom" constant="5" id="gzl-9A-Tx5"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="ic_user.png" id="SJj-hY-f8n"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="nUI-3R-55A" id="sD1-Az-upp"/>
+                        <outlet property="tvListFriends" destination="4Br-7X-jV2" id="oVH-Lm-RbE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O63-aM-rL8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="nUI-3R-55A">
+                    <connections>
+                        <outlet property="delegate" destination="NFV-0g-ssM" id="i6G-7z-rcl"/>
+                        <outlet property="searchBar" destination="AYH-45-Jwr" id="uEK-YA-pOz"/>
+                        <outlet property="searchContentsController" destination="NFV-0g-ssM" id="GtS-Pc-93P"/>
+                        <outlet property="searchResultsDataSource" destination="NFV-0g-ssM" id="gp8-fk-7fV"/>
+                        <outlet property="searchResultsDelegate" destination="NFV-0g-ssM" id="2Kp-To-5cQ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2511" y="-61"/>
+            <point key="canvasLocation" x="2485.5999999999999" y="-252.32383808095955"/>
         </scene>
         <!--Add Friend View Controller-->
         <scene sceneID="Stc-eO-YJK">
@@ -210,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cx6-18-aYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3269.5999999999999" y="-62.518740629685162"/>
+            <point key="canvasLocation" x="2553" y="437"/>
         </scene>
         <!--Recent-->
         <scene sceneID="Wez-kS-k1t">
