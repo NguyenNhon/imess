@@ -181,7 +181,7 @@ open class ActionButton: NSObject {
         self.floatButton.addConstraints(height)
         
         let trailingSpacing = NSLayoutConstraint.constraints(withVisualFormat: "V:[floatButton]-60-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
-        let bottomSpacing = NSLayoutConstraint.constraints(withVisualFormat: "H:[floatButton]-15-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
+        let bottomSpacing = NSLayoutConstraint.constraints(withVisualFormat: "H:[floatButton]-40-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
         self.parentView.addConstraints(trailingSpacing)
         self.parentView.addConstraints(bottomSpacing)
     }

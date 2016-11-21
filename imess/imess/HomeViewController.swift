@@ -8,10 +8,30 @@
 
 import UIKit
 
-class HomeViewController: UITabBarController {
+class HomeViewController: UITabBarController, UITabBarControllerDelegate {
 //    var actionButton: ActionButton!
+    var initTabBar : String = "Recent"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.delegate = self
+        
+//        if self.tabBarController == nil {
+//            print("tab bar nil")
+//            return
+//        }
+//        if initTabBar == "Recent" {
+//            self.tabBarController?.selectedIndex = 2
+//        }
+//        else if initTabBar == "Friends" {
+//            self.tabBarController?.selectedIndex = 2
+//        }
+//        else if initTabBar == "Groups" {
+//            self.tabBarController?.selectedIndex = 2
+//        }
+//        else {
+//            self.tabBarController?.selectedIndex = 2
+//        }
         self.navigationController?.isNavigationBarHidden = true
         
 //        let shareImage = UIImage(named: "ic_groups.png")

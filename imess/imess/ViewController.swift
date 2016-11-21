@@ -59,6 +59,17 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             if error != nil{
                 return;
             }
+            if user != nil {
+                ViewController.UserCurrent = user
+                let uid = user?.uid as String!
+                let ref : FIRDatabaseReference = FIRDatabase.database().reference().child("users/\(uid!)")
+                ref.observeSingleEvent(of: FIRDataEventType.value
+                    , with: { snapshot in
+                        if ( snapshot.value is NSNull ) {
+                            ref.setValue(["name" : user?.displayName!, "email" : user?.email!, "photoUrl" : user?.photoURL?.path, "id" : uid!])
+                        }
+                })
+            }
         })
         
         FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
@@ -66,7 +77,12 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 ViewController.UserCurrent = user
                 let uid = user?.uid as String!
                 let ref : FIRDatabaseReference = FIRDatabase.database().reference().child("users/\(uid!)")
-                ref.setValue(["name" : user?.displayName!, "email" : user?.email!, "photoUrl" : user?.photoURL?.path, "id" : uid!])
+                ref.observeSingleEvent(of: FIRDataEventType.value
+                    , with: { snapshot in
+                        if ( snapshot.value is NSNull ) {
+                            ref.setValue(["name" : user?.displayName!, "email" : user?.email!, "photoUrl" : user?.photoURL?.path, "id" : uid!])
+                        }
+                })
             }
         })
         

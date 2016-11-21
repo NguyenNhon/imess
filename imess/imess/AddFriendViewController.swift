@@ -15,51 +15,62 @@ import FirebaseAuth
 class AddFriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var tvListUsers: UITableView!
     var firebaseDatabaseReference : FIRDatabaseReference!
-    //var userCurrent : FIRUser!
     var listUsers : [User]!
     var listOldFriends : [User]!
     
-    @IBOutlet weak var tvListUsers: UITableView!
-    
-    @IBAction func clickSearch(_ sender: Any) {
-        findFriends()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
         firebaseDatabaseReference = FIRDatabase.database().reference()
         listUsers = []
-        //listOldFriends = findOldFriends()
+        listOldFriends = []
+        findOldFriends()
         searchTextField.leftViewMode = 	UITextFieldViewMode.always
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: searchTextField.frame.height, height: searchTextField.frame.height))
         let image = UIImage(named: "search.png")
         imageView.image = image
         searchTextField.leftView = imageView
+        //self.tabBarController?.
+        //if data == "friends" {
+        //tab friends
+        //}
     }
     
-    func findOldFriends() -> [User] {
-        var oldFriends : [User] = []
-        let userCurrent = ViewController.UserCurrent
-        let test = userCurrent?.uid
-        print("\(test)")
-        let userRef = self.firebaseDatabaseReference.child("users").child("\(userCurrent?.uid)").child("friends")
-        userRef.observeSingleEvent(of: .value, with: {
-            snapshot in
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "homeView" {
+            let homeView = segue.destination as! HomeViewController
+            homeView.initTabBar = "Friends"
+        }
+    }
+    
+    @IBAction func clickSearch(_ sender: Any) {
+        findFriends()
+    }
+    
+    func findOldFriends() {
+        //var oldFriends : [User] = []
+        self.firebaseDatabaseReference.child("users").child("\((FIRAuth.auth()?.currentUser?.uid)!)").child("friends").observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            //print("\(snapshot.children.nextObject())")
             if snapshot.value is NSNull {
                 print("Not found")
             } else {
-                let enumerator = snapshot.children
-                while let rest = enumerator.nextObject() as? FIRDataSnapshot {
-                    let idFriend = (rest.value as? NSDictionary)?["id"]! as! String
-                    let nameFriend = (rest.value as? NSDictionary)?["name"]! as! String
-                    let photoUrlFriend = (rest.value as? NSDictionary)?["photoUrl"]! as! String
-                    let emailFriend = (rest.value as? NSDictionary)?["email"]! as! String
-                    oldFriends.append(User(name: nameFriend, email: emailFriend, id: idFriend, photoUrl: photoUrlFriend))
+                if snapshot.exists() {
+                    let enumerator = snapshot.children
+                    while let rest = enumerator.nextObject() as? FIRDataSnapshot {
+                        let idFriend = (rest.value as? NSDictionary)?["id"]! as! String
+                        let nameFriend = (rest.value as? NSDictionary)?["name"]! as! String
+                        let photoUrlFriend = (rest.value as? NSDictionary)?["photoUrl"]! as! String
+                        let emailFriend = (rest.value as? NSDictionary)?["email"]! as! String
+                        self.listOldFriends.append(User(name: nameFriend, email: emailFriend, id: idFriend, photoUrl: photoUrlFriend))
+                        print("\(self.listOldFriends.count)")
+                        
+                    }
                 }
             }
         })
-        return oldFriends
     }
     
     func findFriends(){
@@ -75,11 +86,15 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
             if ( snapshot.value is NSNull ) {
                 print("not found")
             } else {
-                //print("Co \(snapshot.childrenCount) users")
                 let enumerator = snapshot.children
                 self.listUsers.removeAll()
                 while let rest = enumerator.nextObject() as? FIRDataSnapshot {
                     let emailFriend = (rest.value as? NSDictionary)?["email"]! as! String
+                    if self.listOldFriends.contains(where: { (user) -> Bool in
+                        return emailFriend == user.email
+                    }) {
+                        continue
+                    }
                     let idFriend = (rest.value as? NSDictionary)?["id"]! as! String
                     let nameFriend = (rest.value as? NSDictionary)?["name"]! as! String
                     let photoUrlFriend = (rest.value as? NSDictionary)?["photoUrl"]! as! String
@@ -118,6 +133,8 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         let uidFriend = cell.dataProfileUid
         let refDatatase = FIRDatabase.database().reference().child("users").child("\(uidCurrent!)").child("friends").child("\(uidFriend!)")
         refDatatase.setValue(["id": uidFriend!,"name": cell.profileName.text!, "email": cell.profileEmail.text!, "photoUrl": cell.dataProfilePhotoUrl!])
-        
+        tableView.cellForRow(at: indexPath)?.removeFromSuperview()
+        self.listUsers.remove(at: indexPath.item)
+        self.tvListUsers.reloadData()
     }
 }

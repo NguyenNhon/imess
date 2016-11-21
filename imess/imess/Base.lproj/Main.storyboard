@@ -85,7 +85,7 @@
         <!--Friends-->
         <scene sceneID="J7D-zm-IJE">
             <objects>
-                <viewController id="NFV-0g-ssM" customClass="FriendViewController" customModule="imess" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="friendsTab" id="NFV-0g-ssM" customClass="FriendViewController" customModule="imess" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gxF-Rk-I24"/>
                         <viewControllerLayoutGuide type="bottom" id="oLz-NZ-lZ1"/>
@@ -128,7 +128,7 @@
                                         <rect key="frame" x="0.0" y="28" width="335" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1A-VR-mZw" id="G96-bZ-rfY">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kOS-Di-hb7">
@@ -142,13 +142,13 @@
                                                     <rect key="frame" x="74" y="10" width="259" height="47"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zm9-db-qXz" userLabel="Name">
-                                                            <rect key="frame" x="0.0" y="0.0" width="259" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="259" height="24"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEX-m3-NVo" userLabel="Email">
-                                                            <rect key="frame" x="0.0" y="23.5" width="259" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="24" width="259" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -193,10 +193,10 @@
                         <constraints>
                             <constraint firstItem="l2Z-Nt-EcX" firstAttribute="top" secondItem="A49-Sk-Uhu" secondAttribute="bottom" constant="20" id="4re-v9-sCB"/>
                             <constraint firstAttribute="trailing" secondItem="A49-Sk-Uhu" secondAttribute="trailing" constant="20" id="66s-YP-wrh"/>
+                            <constraint firstItem="A49-Sk-Uhu" firstAttribute="top" secondItem="oRU-Nk-5LR" secondAttribute="bottom" constant="20" id="CWC-Mc-Jdt"/>
                             <constraint firstItem="6e4-g2-a9a" firstAttribute="top" secondItem="oRU-Nk-5LR" secondAttribute="bottom" constant="20" id="DzR-Ce-hrU"/>
                             <constraint firstItem="aW9-gh-3Gu" firstAttribute="top" secondItem="l2Z-Nt-EcX" secondAttribute="bottom" constant="20" id="IXX-69-pi5"/>
                             <constraint firstAttribute="trailing" secondItem="l2Z-Nt-EcX" secondAttribute="trailing" constant="20" id="KKa-Bo-FBy"/>
-                            <constraint firstItem="A49-Sk-Uhu" firstAttribute="top" secondItem="oRU-Nk-5LR" secondAttribute="bottom" constant="20" id="Mq4-vV-O7o"/>
                             <constraint firstItem="6e4-g2-a9a" firstAttribute="height" secondItem="A49-Sk-Uhu" secondAttribute="height" id="Qkn-20-c6C"/>
                             <constraint firstItem="6e4-g2-a9a" firstAttribute="leading" secondItem="36f-Ab-YfS" secondAttribute="leading" constant="20" id="dCb-hm-XaX"/>
                             <constraint firstItem="A49-Sk-Uhu" firstAttribute="leading" secondItem="6e4-g2-a9a" secondAttribute="trailing" constant="20" id="mrU-y4-DyO"/>
@@ -234,21 +234,35 @@
         <!--Home View Controller-->
         <scene sceneID="Ml1-ow-QTR">
             <objects>
-                <tabBarController storyboardIdentifier="homeView" id="2Vh-sA-SeZ" customClass="HomeViewController" customModule="imess" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="homeViewTest" id="2Vh-sA-SeZ" customClass="HomeViewController" customModule="imess" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="4lA-Mn-nxi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="1Ku-eN-46E" kind="relationship" relationship="viewControllers" id="oZt-e8-Apa"/>
-                        <segue destination="ziL-ZU-kmR" kind="relationship" relationship="viewControllers" id="HxJ-fw-DAZ"/>
-                        <segue destination="NFV-0g-ssM" kind="relationship" relationship="viewControllers" id="mx9-Bj-cM9"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09B-iw-HYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="364" y="45"/>
+            <point key="canvasLocation" x="367" y="437"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="mA3-mp-Fhb">
+            <objects>
+                <tabBarController storyboardIdentifier="homeView" id="C0z-gJ-f55" customClass="HomeViewController" customModule="imess" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="OtC-WF-w4M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="1Ku-eN-46E" kind="relationship" relationship="viewControllers" id="ym6-XC-a2L"/>
+                        <segue destination="ziL-ZU-kmR" kind="relationship" relationship="viewControllers" id="VNM-A5-qb2"/>
+                        <segue destination="NFV-0g-ssM" kind="relationship" relationship="viewControllers" id="LZz-Da-31H"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HQ4-yu-vS1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="236" y="-384"/>
         </scene>
     </scenes>
     <resources>

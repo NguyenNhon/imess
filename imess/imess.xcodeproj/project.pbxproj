@@ -18,6 +18,7 @@
 		EF02CE541DC9FC2C00A6ED31 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CE531DC9FC2C00A6ED31 /* FriendViewController.swift */; };
 		EF0ABEEA1DCF8C8000DEC577 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0ABEE91DCF8C8000DEC577 /* User.swift */; };
 		EF0DCC101DCDB02E0013F894 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DCC0F1DCDB02E0013F894 /* search.png */; };
+		EF33CAC01DDF5A7B005F2B0F /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = EF33CABF1DDF5A7B005F2B0F /* left-arrow.png */; };
 		EF602C1C1DCDD0B9005D2F52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF602C1B1DCDD0B9005D2F52 /* GoogleService-Info.plist */; };
 		EF93C31A1DCA3E4A00C1B1F4 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */; };
 		EFB9251D1DC64B1000AC3A0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9251C1DC64B1000AC3A0D /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 		EF02CE531DC9FC2C00A6ED31 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		EF0ABEE91DCF8C8000DEC577 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EF0DCC0F1DCDB02E0013F894 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = imess/Resource/search.png; sourceTree = "<group>"; };
+		EF33CABF1DDF5A7B005F2B0F /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "left-arrow.png"; path = "imess/Resource/left-arrow.png"; sourceTree = "<group>"; };
 		EF602C1B1DCDD0B9005D2F52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		EFB925191DC64B1000AC3A0D /* imess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imess.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 		EFD31F5F1DC73AE1007D6DAA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EF33CABF1DDF5A7B005F2B0F /* left-arrow.png */,
 				EF0DCC0F1DCDB02E0013F894 /* search.png */,
 				EF02CE431DC994A900A6ED31 /* ic_groups.png */,
 				EF02CE441DC994A900A6ED31 /* ic_recent.png */,
@@ -285,6 +288,7 @@
 				EF0DCC101DCDB02E0013F894 /* search.png in Resources */,
 				EF602C1C1DCDD0B9005D2F52 /* GoogleService-Info.plist in Resources */,
 				EFB925271DC64B1000AC3A0D /* LaunchScreen.storyboard in Resources */,
+				EF33CAC01DDF5A7B005F2B0F /* left-arrow.png in Resources */,
 				EF02CE471DC994A900A6ED31 /* ic_recent.png in Resources */,
 				EFB925241DC64B1000AC3A0D /* Assets.xcassets in Resources */,
 				EFB925311DC64DDA00AC3A0D /* Podfile in Resources */,
