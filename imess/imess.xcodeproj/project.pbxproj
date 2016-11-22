@@ -21,13 +21,18 @@
 		EF33CAC01DDF5A7B005F2B0F /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = EF33CABF1DDF5A7B005F2B0F /* left-arrow.png */; };
 		EF602C1C1DCDD0B9005D2F52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF602C1B1DCDD0B9005D2F52 /* GoogleService-Info.plist */; };
 		EF93C31A1DCA3E4A00C1B1F4 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */; };
+		EFAF24F31DE499E6007B5EFA /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAF24F21DE499E6007B5EFA /* Label.swift */; };
 		EFB9251D1DC64B1000AC3A0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9251C1DC64B1000AC3A0D /* AppDelegate.swift */; };
 		EFB9251F1DC64B1000AC3A0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9251E1DC64B1000AC3A0D /* ViewController.swift */; };
 		EFB925221DC64B1000AC3A0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFB925201DC64B1000AC3A0D /* Main.storyboard */; };
 		EFB925241DC64B1000AC3A0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFB925231DC64B1000AC3A0D /* Assets.xcassets */; };
 		EFB925271DC64B1000AC3A0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFB925251DC64B1000AC3A0D /* LaunchScreen.storyboard */; };
 		EFB925311DC64DDA00AC3A0D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EFB925301DC64DDA00AC3A0D /* Podfile */; };
+		EFBE26401DE4885E00A66478 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE263F1DE4885E00A66478 /* Message.swift */; };
+		EFC399831DE486700010AF8C /* LeftCellChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC399821DE486700010AF8C /* LeftCellChat.swift */; };
 		EFD114F01DE2F5F800C07007 /* CustomCellFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD114EF1DE2F5F800C07007 /* CustomCellFriend.swift */; };
+		EFD114F21DE34BD600C07007 /* ChatFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD114F11DE34BD600C07007 /* ChatFriendController.swift */; };
+		EFD114F71DE3650800C07007 /* RightCellChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD114F61DE3650800C07007 /* RightCellChat.swift */; };
 		EFD31F5E1DC71CF1007D6DAA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD31F5D1DC71CF1007D6DAA /* HomeViewController.swift */; };
 		EFE8F55F1DD4C2D900030EAF /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE8F55E1DD4C2D900030EAF /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +54,7 @@
 		EF33CABF1DDF5A7B005F2B0F /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "left-arrow.png"; path = "imess/Resource/left-arrow.png"; sourceTree = "<group>"; };
 		EF602C1B1DCDD0B9005D2F52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		EFAF24F21DE499E6007B5EFA /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		EFB925191DC64B1000AC3A0D /* imess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB9251C1DC64B1000AC3A0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFB9251E1DC64B1000AC3A0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +63,11 @@
 		EFB925261DC64B1000AC3A0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFB925281DC64B1000AC3A0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFB925301DC64DDA00AC3A0D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EFBE263F1DE4885E00A66478 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		EFC399821DE486700010AF8C /* LeftCellChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftCellChat.swift; sourceTree = "<group>"; };
 		EFD114EF1DE2F5F800C07007 /* CustomCellFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellFriend.swift; sourceTree = "<group>"; };
+		EFD114F11DE34BD600C07007 /* ChatFriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatFriendController.swift; sourceTree = "<group>"; };
+		EFD114F61DE3650800C07007 /* RightCellChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightCellChat.swift; sourceTree = "<group>"; };
 		EFD31F5D1DC71CF1007D6DAA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EFE8F55E1DD4C2D900030EAF /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +117,14 @@
 			name = Utility;
 			sourceTree = "<group>";
 		};
+		EFAF24F11DE499C4007B5EFA /* LabelCustom */ = {
+			isa = PBXGroup;
+			children = (
+				EFAF24F21DE499E6007B5EFA /* Label.swift */,
+			);
+			name = LabelCustom;
+			sourceTree = "<group>";
+		};
 		EFB925101DC64B1000AC3A0D = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +163,8 @@
 		EFD114EC1DE2DD4F00C07007 /* ChatController */ = {
 			isa = PBXGroup;
 			children = (
+				EFD114F31DE34CA000C07007 /* CellForChatFriend */,
+				EFD114F11DE34BD600C07007 /* ChatFriendController.swift */,
 			);
 			name = ChatController;
 			sourceTree = "<group>";
@@ -155,6 +175,15 @@
 				EFD114EF1DE2F5F800C07007 /* CustomCellFriend.swift */,
 			);
 			name = CellForFriend;
+			sourceTree = "<group>";
+		};
+		EFD114F31DE34CA000C07007 /* CellForChatFriend */ = {
+			isa = PBXGroup;
+			children = (
+				EFD114F61DE3650800C07007 /* RightCellChat.swift */,
+				EFC399821DE486700010AF8C /* LeftCellChat.swift */,
+			);
+			name = CellForChatFriend;
 			sourceTree = "<group>";
 		};
 		EFD31F5C1DC71CB5007D6DAA /* swift */ = {
@@ -200,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				EF0ABEE91DCF8C8000DEC577 /* User.swift */,
+				EFBE263F1DE4885E00A66478 /* Message.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -207,6 +237,7 @@
 		EFD31F6F1DC74B0F007D6DAA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EFAF24F11DE499C4007B5EFA /* LabelCustom */,
 				EF02CE491DC9B79200A6ED31 /* ActionButton */,
 			);
 			name = View;
@@ -381,8 +412,13 @@
 				EF02CE541DC9FC2C00A6ED31 /* FriendViewController.swift in Sources */,
 				EFD31F5E1DC71CF1007D6DAA /* HomeViewController.swift in Sources */,
 				EF02CE4C1DC9B7A000A6ED31 /* ActionButton.swift in Sources */,
+				EFD114F71DE3650800C07007 /* RightCellChat.swift in Sources */,
+				EFC399831DE486700010AF8C /* LeftCellChat.swift in Sources */,
 				EF0ABEEA1DCF8C8000DEC577 /* User.swift in Sources */,
+				EFD114F21DE34BD600C07007 /* ChatFriendController.swift in Sources */,
+				EFAF24F31DE499E6007B5EFA /* Label.swift in Sources */,
 				EF02CE521DC9C3D600A6ED31 /* GroupViewController.swift in Sources */,
+				EFBE26401DE4885E00A66478 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

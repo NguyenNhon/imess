@@ -28,9 +28,7 @@ class FriendViewController: UIViewController, UITableViewDataSource, UITableView
         actionButton.backgroundColor = UIColor(red: 238.0/255.0, green: 130.0/255.0, blue: 34.0/255.0, alpha:1.0)
         actionButton.getButton().addTarget(self, action: #selector(FriendViewController.buttonTouchDown(_:)), for: .touchDown)
         
-        if listFriends.count > 0 {
-            self.tvListFriends.reloadData()
-        }
+        self.tvListFriends.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +44,7 @@ class FriendViewController: UIViewController, UITableViewDataSource, UITableView
                 print("Not found")
             } else {
                 if snapshot.exists() {
+                    self.listFriends.removeAll()
                     let enumerator = snapshot.children
                     while let rest = enumerator.nextObject() as? FIRDataSnapshot {
                         let idFriend = (rest.value as? NSDictionary)?["id"]! as! String
@@ -84,5 +83,10 @@ class FriendViewController: UIViewController, UITableViewDataSource, UITableView
             cell?.dataProfilePhotoUrl = self.listFriends[indexPath.row].photoUrl
         }
         return (cell!)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chatFriendVC = self.storyboard?.instantiateViewController(withIdentifier: "chatFriend")
+        self.navigationController?.pushViewController(chatFriendVC!, animated: true)
     }
 }
