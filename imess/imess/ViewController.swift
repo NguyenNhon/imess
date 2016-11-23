@@ -55,6 +55,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         let authentication = user.authentication
         let credential = FIRGoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!, accessToken:(authentication?.accessToken)!)
+        
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil{
                 return;
@@ -71,7 +72,23 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 })
             }
         })
-        
+        FIRAuth.auth()?.signIn(withCustomToken: (authentication?.accessToken)!, completion: { (user, error) in
+            if error != nil{
+                return;
+            }
+            if user != nil {
+                ViewController.UserCurrent = user
+                let uid = user?.uid as String!
+                let ref : FIRDatabaseReference = FIRDatabase.database().reference().child("users/\(uid!)")
+                ref.observeSingleEvent(of: FIRDataEventType.value
+                    , with: { snapshot in
+                        if ( snapshot.value is NSNull ) {
+                            ref.setValue(["name" : user?.displayName!, "email" : user?.email!, "photoUrl" : user?.photoURL?.path, "id" : uid!])
+                        }
+                })
+            }
+
+        })
         FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in
             if user != nil {
                 ViewController.UserCurrent = user
@@ -85,7 +102,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 })
             }
         })
-        
+        if ViewController.UserCurrent == nil {
+            print("null")
+        }
         let storyboard = self.storyboard?.instantiateViewController(withIdentifier: "homeView")
         self.navigationController?.pushViewController(storyboard!, animated: true)
     }

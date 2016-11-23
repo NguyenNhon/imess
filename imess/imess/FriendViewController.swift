@@ -27,13 +27,12 @@ class FriendViewController: UIViewController, UITableViewDataSource, UITableView
         actionButton.setTitle("+", forState: UIControlState())
         actionButton.backgroundColor = UIColor(red: 238.0/255.0, green: 130.0/255.0, blue: 34.0/255.0, alpha:1.0)
         actionButton.getButton().addTarget(self, action: #selector(FriendViewController.buttonTouchDown(_:)), for: .touchDown)
-        
+        initListFriends()
         self.tvListFriends.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        initListFriends()
     }
     
     func initListFriends() {
