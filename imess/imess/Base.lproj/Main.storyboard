@@ -190,7 +190,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="fma-Fa-nYj">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fma-Fa-nYj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwf-Iu-Cov" userLabel="Content View">
@@ -342,15 +342,16 @@
                                             <constraint firstAttribute="bottom" secondItem="9hZ-7j-CmL" secondAttribute="bottom" id="Oxg-WI-xbx"/>
                                             <constraint firstItem="t8r-X8-X7p" firstAttribute="leading" secondItem="fwf-Iu-Cov" secondAttribute="leading" id="TJw-6O-QYx"/>
                                             <constraint firstAttribute="trailing" secondItem="t8r-X8-X7p" secondAttribute="trailing" id="dog-EA-OKi"/>
+                                            <constraint firstAttribute="bottom" secondItem="9hZ-7j-CmL" secondAttribute="bottom" id="tI2-LI-LZG"/>
                                             <constraint firstItem="9hZ-7j-CmL" firstAttribute="leading" secondItem="fwf-Iu-Cov" secondAttribute="leading" id="vzI-Af-qIm"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="fwf-Iu-Cov" firstAttribute="top" secondItem="fma-Fa-nYj" secondAttribute="top" id="AQj-Yj-LpD"/>
+                                    <constraint firstAttribute="bottom" secondItem="fwf-Iu-Cov" secondAttribute="bottom" id="UqK-0T-jFP"/>
                                     <constraint firstAttribute="trailing" secondItem="fwf-Iu-Cov" secondAttribute="trailing" id="a5k-A4-tLY"/>
                                     <constraint firstItem="fwf-Iu-Cov" firstAttribute="leading" secondItem="fma-Fa-nYj" secondAttribute="leading" id="pG1-pF-dS4"/>
-                                    <constraint firstAttribute="bottom" secondItem="fwf-Iu-Cov" secondAttribute="bottom" id="qpa-pM-5bT"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="4CU-e2-SPd" id="jze-MU-cc9"/>

@@ -14,6 +14,8 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tfContentMessage: UITextField!
 
+    var isKeyboardUp : Bool = false
+    
     func touchUpInsideTextView(_ sender: Any) {
         
         //NSLayoutConstraint(item: tfContentMessage, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottomMargin, multiplier: 1.0, constant: 324.0).isActive = true
@@ -44,8 +46,11 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
         
         let info : NSDictionary = notification.userInfo! as NSDictionary
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        moveView(textField: tfContentMessage, moveDistance: -keyboardSize!.height, up: true)
-        
+        if isKeyboardUp == false {
+            moveView(textField: tfContentMessage, moveDistance: -keyboardSize!.height, up: true)
+            isKeyboardUp = true
+        }
+        //self.scrollView.isScrollEnabled = false
         //print("height: \(keyboardSize!.height)")
         //let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
 //        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0,  keyboardSize!.height, 0.0)
@@ -67,7 +72,10 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
         //Once keyboard disappears, restore original positions
         let info : NSDictionary = notification.userInfo! as NSDictionary
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        moveView(textField: tfContentMessage, moveDistance: -keyboardSize!.height, up: false)
+        if isKeyboardUp == true {
+            moveView(textField: tfContentMessage, moveDistance: -keyboardSize!.height, up: false)
+            isKeyboardUp = false
+        }
         
 //        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
 //        self.scrollView.contentInset = contentInsets
@@ -89,12 +97,22 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
     
     func textFieldDidEndEditing(_ textField: UITextField)
     {
-        tfContentMessage = nil
+        //tfContentMessage = nil
     }
     //keyboard
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func moveView(textField: UITextField, moveDistance: CGFloat, up: Bool) {
-        let moveDuration = 0.3
+        var moveDuration = 0.3
+        if isKeyboardUp {
+            moveDuration = 0.1
+        } else {
+            moveDuration = 0.4
+        }
+        
         let movement : CGFloat = CGFloat( up ? moveDistance : -moveDistance)
         UIView.beginAnimations("animatedTextField", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
@@ -110,14 +128,17 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         registerForKeyboardNotifications()
-        //deregisterFromKeyboardNotifications()
-        
+        self.tfContentMessage.delegate = self
+        self.tvChat.delegate = self
         print("\(messages.count)")
         tvChat.estimatedRowHeight = 100.0
         tvChat.rowHeight = UITableViewAutomaticDimension
         tvChat.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        deregisterFromKeyboardNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -135,8 +156,6 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
                 cell.profileName.text = messages[indexPath.row].owner.name
                 cell.message.text = messages[indexPath.row].message
                 cell.message.layer.masksToBounds = true
-                //cell.message.layer.cornerRadius = 10.0
-//                cell.message.drawText(in: UIEdgeInsetsInsetRect(cell.message.layer.frame, UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)))
                 cell.viewMesage.layer.cornerRadius = 20.0
                 let urlPhoto = NSURL(string: self.messages[indexPath.row].owner.photoUrl)
                 if let dataPhoto = NSData(contentsOf: urlPhoto as! URL) {
@@ -147,11 +166,9 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
         }
         let cell = self.tvChat.dequeueReusableCell(withIdentifier: "RightCellChat") as! RightCellChat
         if  self.messages.count > indexPath.row{
-            //print("\(messages[indexPath.row].message)")
             cell.message.text = messages[indexPath.row].message
             cell.message.layer.masksToBounds = true
             cell.viewMessage.layer.cornerRadius = 20.0
-            //cell.message.layer.cornerRadius = 20.0
         }
         return cell
     }
