@@ -132,7 +132,19 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         let uidCurrent = userCurrent?.uid
         let uidFriend = cell.dataProfileUid
         let refDatatase = FIRDatabase.database().reference().child("users").child("\(uidCurrent!)").child("friends").child("\(uidFriend!)")
-        refDatatase.setValue(["id": uidFriend!,"name": cell.profileName.text!, "email": cell.profileEmail.text!, "photoUrl": cell.dataProfilePhotoUrl!])
+        refDatatase.observeSingleEvent(of: FIRDataEventType.value
+            , with: { snapshot in
+                if ( snapshot.value is NSNull ) {
+                    refDatatase.setValue(["id": uidFriend!,"name": cell.profileName.text!, "email": cell.profileEmail.text!, "photoUrl": cell.dataProfilePhotoUrl!])
+                }
+        })
+        let refDatabaseFri = FIRDatabase.database().reference().child("users").child("\(uidFriend!)").child("friends").child("\(uidCurrent!)")
+        refDatabaseFri.observeSingleEvent(of: FIRDataEventType.value
+            , with: { snapshot in
+                if ( snapshot.value is NSNull ) {
+                    refDatabaseFri.setValue(["id": uidCurrent!,"name": (userCurrent?.displayName)!, "email": (userCurrent?.email)!, "photoUrl": (userCurrent?.photoURL?.path)])
+                }
+        })
         tableView.cellForRow(at: indexPath)?.removeFromSuperview()
         self.listUsers.remove(at: indexPath.item)
         self.tvListUsers.reloadData()

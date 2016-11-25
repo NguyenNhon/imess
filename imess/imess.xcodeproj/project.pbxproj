@@ -28,6 +28,8 @@
 		EFB925241DC64B1000AC3A0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFB925231DC64B1000AC3A0D /* Assets.xcassets */; };
 		EFB925271DC64B1000AC3A0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFB925251DC64B1000AC3A0D /* LaunchScreen.storyboard */; };
 		EFB925311DC64DDA00AC3A0D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EFB925301DC64DDA00AC3A0D /* Podfile */; };
+		EFBA4EC51DE86423001CA9ED /* plus-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = EFBA4EC41DE86423001CA9ED /* plus-circle.png */; };
+		EFBA4EC81DE864F5001CA9ED /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA4EC71DE864F5001CA9ED /* AddGroupViewController.swift */; };
 		EFBE26401DE4885E00A66478 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE263F1DE4885E00A66478 /* Message.swift */; };
 		EFC399831DE486700010AF8C /* LeftCellChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC399821DE486700010AF8C /* LeftCellChat.swift */; };
 		EFD114F01DE2F5F800C07007 /* CustomCellFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD114EF1DE2F5F800C07007 /* CustomCellFriend.swift */; };
@@ -63,6 +65,8 @@
 		EFB925261DC64B1000AC3A0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFB925281DC64B1000AC3A0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFB925301DC64DDA00AC3A0D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EFBA4EC41DE86423001CA9ED /* plus-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plus-circle.png"; path = "imess/Resource/plus-circle.png"; sourceTree = "<group>"; };
+		EFBA4EC71DE864F5001CA9ED /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		EFBE263F1DE4885E00A66478 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EFC399821DE486700010AF8C /* LeftCellChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftCellChat.swift; sourceTree = "<group>"; };
 		EFD114EF1DE2F5F800C07007 /* CustomCellFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellFriend.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		EFD31F5F1DC73AE1007D6DAA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EFBA4EC41DE86423001CA9ED /* plus-circle.png */,
 				EF33CABF1DDF5A7B005F2B0F /* left-arrow.png */,
 				EF0DCC0F1DCDB02E0013F894 /* search.png */,
 				EF02CE431DC994A900A6ED31 /* ic_groups.png */,
@@ -221,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				EF02CE511DC9C3D600A6ED31 /* GroupViewController.swift */,
+				EFBA4EC71DE864F5001CA9ED /* AddGroupViewController.swift */,
 			);
 			name = GroupViewController;
 			sourceTree = "<group>";
@@ -339,6 +345,7 @@
 				EF602C1C1DCDD0B9005D2F52 /* GoogleService-Info.plist in Resources */,
 				EFB925271DC64B1000AC3A0D /* LaunchScreen.storyboard in Resources */,
 				EF33CAC01DDF5A7B005F2B0F /* left-arrow.png in Resources */,
+				EFBA4EC51DE86423001CA9ED /* plus-circle.png in Resources */,
 				EF02CE471DC994A900A6ED31 /* ic_recent.png in Resources */,
 				EFB925241DC64B1000AC3A0D /* Assets.xcassets in Resources */,
 				EFB925311DC64DDA00AC3A0D /* Podfile in Resources */,
@@ -418,6 +425,7 @@
 				EFD114F21DE34BD600C07007 /* ChatFriendController.swift in Sources */,
 				EFAF24F31DE499E6007B5EFA /* Label.swift in Sources */,
 				EF02CE521DC9C3D600A6ED31 /* GroupViewController.swift in Sources */,
+				EFBA4EC81DE864F5001CA9ED /* AddGroupViewController.swift in Sources */,
 				EFBE26401DE4885E00A66478 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
