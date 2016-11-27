@@ -21,6 +21,7 @@
 		EF33CAC01DDF5A7B005F2B0F /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = EF33CABF1DDF5A7B005F2B0F /* left-arrow.png */; };
 		EF602C1C1DCDD0B9005D2F52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF602C1B1DCDD0B9005D2F52 /* GoogleService-Info.plist */; };
 		EF93C31A1DCA3E4A00C1B1F4 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */; };
+		EFA72A381DEAD8BD008CB91A /* AddFriendInGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA72A371DEAD8BD008CB91A /* AddFriendInGroup.swift */; };
 		EFAF24F31DE499E6007B5EFA /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAF24F21DE499E6007B5EFA /* Label.swift */; };
 		EFB9251D1DC64B1000AC3A0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9251C1DC64B1000AC3A0D /* AppDelegate.swift */; };
 		EFB9251F1DC64B1000AC3A0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9251E1DC64B1000AC3A0D /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 		EF33CABF1DDF5A7B005F2B0F /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "left-arrow.png"; path = "imess/Resource/left-arrow.png"; sourceTree = "<group>"; };
 		EF602C1B1DCDD0B9005D2F52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF93C3191DCA3E4A00C1B1F4 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		EFA72A371DEAD8BD008CB91A /* AddFriendInGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendInGroup.swift; sourceTree = "<group>"; };
 		EFAF24F21DE499E6007B5EFA /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		EFB925191DC64B1000AC3A0D /* imess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB9251C1DC64B1000AC3A0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				EF02CE511DC9C3D600A6ED31 /* GroupViewController.swift */,
 				EFBA4EC71DE864F5001CA9ED /* AddGroupViewController.swift */,
+				EFA72A371DEAD8BD008CB91A /* AddFriendInGroup.swift */,
 			);
 			name = GroupViewController;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				EF93C31A1DCA3E4A00C1B1F4 /* AddFriendViewController.swift in Sources */,
 				EFD114F01DE2F5F800C07007 /* CustomCellFriend.swift in Sources */,
 				EFB9251D1DC64B1000AC3A0D /* AppDelegate.swift in Sources */,
+				EFA72A381DEAD8BD008CB91A /* AddFriendInGroup.swift in Sources */,
 				EF02CE501DC9BEEB00A6ED31 /* RecentViewController.swift in Sources */,
 				EF02CE541DC9FC2C00A6ED31 /* FriendViewController.swift in Sources */,
 				EFD31F5E1DC71CF1007D6DAA /* HomeViewController.swift in Sources */,
