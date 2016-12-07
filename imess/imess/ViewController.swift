@@ -20,12 +20,20 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     static var UserCurrent : FIRUser! = nil
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     @IBAction func signOutGoogleAccount(_ sender: Any) {
+        if self.activityIndicatorView.isAnimating {
+            return
+        }
         GIDSignIn.sharedInstance().signOut()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         googleInit()
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicatorView.center = view.center
     }
     
     func googleInit() {
@@ -48,6 +56,10 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     }
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if self.activityIndicatorView.isAnimating {
+            return
+        }
+        self.activityIndicatorView.startAnimating()
         if error != nil {
             print(error)
             return
@@ -58,21 +70,29 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil{
+                self.activityIndicatorView.stopAnimating()
                 return;
             }
             if user != nil {
                 ViewController.UserCurrent = user
+//                print("----------photoUrl: \((user?.photoURL?.path)!)")
+//                print("----------photoUrl: \(user?.photoURL?.path)")
+//                print("----------photoUrl: \((user?.photoURL?.absoluteString)!)")
                 //self.performSegue(withIdentifier: "loggedIn", sender: nil)
                 let uid = user?.uid as String!
                 let ref : FIRDatabaseReference = FIRDatabase.database().reference().child("users/\(uid!)")
                 ref.observeSingleEvent(of: FIRDataEventType.value
                     , with: { snapshot in
                         if ( snapshot.value is NSNull ) {
-                            ref.setValue(["name" : user?.displayName!, "email" : user?.email!, "photoUrl" : user?.photoURL?.path, "id" : uid!])
+                            ref.setValue(["name" : (user?.displayName)!, "email" : (user?.email)!, "photoUrl" : (user?.photoURL?.absoluteString)!, "id" : uid!])
                         }
                 })
-                let storyboard = self.storyboard?.instantiateViewController(withIdentifier: "homeView")
-                self.navigationController?.pushViewController(storyboard!, animated: true)
+                self.activityIndicatorView.stopAnimating()
+                let homeView = self.storyboard?.instantiateViewController(withIdentifier: "homeView") as! UITabBarController
+                //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                //appDelegate.window?.rootViewController = homeView
+                
+                self.navigationController?.pushViewController(homeView, animated: true)
             }
         })
 //        FIRAuth.auth()?.addStateDidChangeListener({ (auth, user) in

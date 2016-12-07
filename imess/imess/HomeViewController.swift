@@ -10,45 +10,29 @@ import UIKit
 
 class HomeViewController: UITabBarController, UITabBarControllerDelegate {
 //    var actionButton: ActionButton!
-    var initTabBar : String = "Recent"
+    var initTabBar : ETabBarName = .RECENT
+    
+    @IBOutlet weak var tabBarRootView: UITabBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tabBarController?.delegate = self
-        
-//        if self.tabBarController == nil {
-//            print("tab bar nil")
-//            return
-//        }
-//        if initTabBar == "Recent" {
-//            self.tabBarController?.selectedIndex = 2
-//        }
-//        else if initTabBar == "Friends" {
-//            self.tabBarController?.selectedIndex = 2
-//        }
-//        else if initTabBar == "Groups" {
-//            self.tabBarController?.selectedIndex = 2
-//        }
-//        else {
-//            self.tabBarController?.selectedIndex = 2
-//        }
+        tabBarController?.delegate = self
         self.navigationController?.isNavigationBarHidden = true
-        
-//        let shareImage = UIImage(named: "ic_groups.png")
-//        let emailImage = UIImage(named: "ic_groups.png")
-//        
-//        let share = ActionButtonItem(title: "share", image: shareImage)
-//        share.action = { item in print("Sharing...") }
-//        
-//        let email = ActionButtonItem(title: "email", image: emailImage)
-//        email.action = { item in print("Email...") }
-//        
-//        actionButton = ActionButton(attachedToView: self.view, items: [share, email])
-//        actionButton.action = { button in button.toggleMenu() }
-//        actionButton.setTitle("+", forState: UIControlState())
-//        
-//        actionButton.backgroundColor = UIColor(red: 238.0/255.0, green: 130.0/255.0, blue: 34.0/255.0, alpha:1.0)
-//        
+        print("index: \(self.selectedViewController?.textInputContextIdentifier)")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        switch initTabBar {
+        case .RECENT:
+            self.selectedIndex = 0
+        case .GROUP:
+            self.selectedIndex = 1
+        case .FRIEND:
+            self.selectedIndex = 2
+        }
+    }
+}
+
+enum ETabBarName {
+    case RECENT, GROUP, FRIEND
 }

@@ -16,36 +16,44 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tvListUsers: UITableView!
+    weak var activityIndicatorView: UIActivityIndicatorView!
     var firebaseDatabaseReference : FIRDatabaseReference!
     var listUsers : [User]!
     var listOldFriends : [User]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = false
+        
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        tvListUsers.backgroundView = activityIndicatorView
+        self.activityIndicatorView = activityIndicatorView
+        
+        self.navigationController?.isNavigationBarHidden = true
         firebaseDatabaseReference = FIRDatabase.database().reference()
         listUsers = []
         listOldFriends = []
-        findOldFriends()
         searchTextField.leftViewMode = 	UITextFieldViewMode.always
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: searchTextField.frame.height, height: searchTextField.frame.height))
         let image = UIImage(named: "search.png")
         imageView.image = image
         searchTextField.leftView = imageView
-        //self.tabBarController?.
-        //if data == "friends" {
-        //tab friends
-        //}
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.activityIndicatorView.startAnimating()
+        findOldFriends()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "homeView" {
+        if segue.identifier == "SegueDoneAddFriend" {
             let homeView = segue.destination as! HomeViewController
-            homeView.initTabBar = "Friends"
+            homeView.initTabBar = .FRIEND
         }
     }
     
     @IBAction func clickSearch(_ sender: Any) {
+        self.activityIndicatorView.startAnimating()
+        self.listUsers.removeAll()
         findFriends()
     }
     
@@ -59,17 +67,17 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
             } else {
                 if snapshot.exists() {
                     let enumerator = snapshot.children
+                    self.listOldFriends.removeAll()
                     while let rest = enumerator.nextObject() as? FIRDataSnapshot {
                         let idFriend = (rest.value as? NSDictionary)?["id"]! as! String
                         let nameFriend = (rest.value as? NSDictionary)?["name"]! as! String
                         let photoUrlFriend = (rest.value as? NSDictionary)?["photoUrl"]! as! String
                         let emailFriend = (rest.value as? NSDictionary)?["email"]! as! String
                         self.listOldFriends.append(User(name: nameFriend, email: emailFriend, id: idFriend, photoUrl: photoUrlFriend))
-                        print("\(self.listOldFriends.count)")
-                        
                     }
                 }
             }
+            self.activityIndicatorView.stopAnimating()
         })
     }
     
@@ -90,7 +98,7 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.listUsers.removeAll()
                 while let rest = enumerator.nextObject() as? FIRDataSnapshot {
                     let emailFriend = (rest.value as? NSDictionary)?["email"]! as! String
-                    if self.listOldFriends.contains(where: { (user) -> Bool in
+                    if emailFriend == (ViewController.UserCurrent.email)! || self.listOldFriends.contains(where: { (user) -> Bool in
                         return emailFriend == user.email
                     }) {
                         continue
@@ -99,10 +107,10 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                     let nameFriend = (rest.value as? NSDictionary)?["name"]! as! String
                     let photoUrlFriend = (rest.value as? NSDictionary)?["photoUrl"]! as! String
                     self.listUsers.append(User(name: nameFriend, email: emailFriend, id: idFriend, photoUrl: photoUrlFriend))
-                    
                 }
                 self.tvListUsers.reloadData()
             }
+            self.activityIndicatorView.stopAnimating()
         })
     }
     var tempImg : UIImage!
@@ -127,6 +135,10 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.activityIndicatorView.isAnimating {
+            return
+        }
+        self.activityIndicatorView.startAnimating()
         let cell = self.tvListUsers.cellForRow(at: indexPath) as! CustomTableViewCell
         let userCurrent = ViewController.UserCurrent
         let uidCurrent = userCurrent?.uid
@@ -136,17 +148,20 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
             , with: { snapshot in
                 if ( snapshot.value is NSNull ) {
                     refDatatase.setValue(["id": uidFriend!,"name": cell.profileName.text!, "email": cell.profileEmail.text!, "photoUrl": cell.dataProfilePhotoUrl!])
+                    
+                    //friends
+                    let refDatabaseFri = FIRDatabase.database().reference().child("users").child("\(uidFriend!)").child("friends").child("\(uidCurrent!)")
+                    refDatabaseFri.observeSingleEvent(of: FIRDataEventType.value
+                        , with: { snapshot in
+                            if ( snapshot.value is NSNull ) {
+                                refDatabaseFri.setValue(["id": uidCurrent!,"name": (userCurrent?.displayName)!, "email": (userCurrent?.email)!, "photoUrl": (userCurrent?.photoURL?.absoluteString)!])
+                                cell.removeFromSuperview()
+                                self.listUsers.remove(at: indexPath.row)
+                                tableView.reloadData()
+                                self.activityIndicatorView.stopAnimating()
+                            }
+                    })
                 }
         })
-        let refDatabaseFri = FIRDatabase.database().reference().child("users").child("\(uidFriend!)").child("friends").child("\(uidCurrent!)")
-        refDatabaseFri.observeSingleEvent(of: FIRDataEventType.value
-            , with: { snapshot in
-                if ( snapshot.value is NSNull ) {
-                    refDatabaseFri.setValue(["id": uidCurrent!,"name": (userCurrent?.displayName)!, "email": (userCurrent?.email)!, "photoUrl": (userCurrent?.photoURL?.path)])
-                }
-        })
-        tableView.cellForRow(at: indexPath)?.removeFromSuperview()
-        self.listUsers.remove(at: indexPath.item)
-        self.tvListUsers.reloadData()
     }
 }

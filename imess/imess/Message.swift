@@ -11,7 +11,7 @@ import Foundation
 class Message {
     private var _id : String
     private var _message : String
-    private var _timeSend : NSDate
+    private var _timeSend : String
     private var _owner : User
     private var _viewers : [User]
     var id : String {
@@ -30,7 +30,7 @@ class Message {
             _message = newValue
         }
     }
-    var timeSend : NSDate {
+    var timeSend : String {
         get {
             return _timeSend
         }
@@ -58,12 +58,12 @@ class Message {
     init() {
         _id = ""
         _message = ""
-        _timeSend = NSDate()
+        _timeSend = ""
         _owner = User()
         _viewers = []
     }
     
-    init(newId : String, newMessage : String, newTimeSend : NSDate, newOwner : User, newViewers : [User]) {
+    init(newId : String, newMessage : String, newTimeSend : String, newOwner : User, newViewers : [User]) {
         _id = newId
         _message = newMessage
         _timeSend = newTimeSend

@@ -24,9 +24,7 @@ class CustomCellFriend : UITableViewCell {
     var dataProfilePhotoUrl: String? = nil
     
     @IBOutlet weak var profilePicture: UIImageView!
-    
     @IBOutlet weak var profileEmail: UILabel!
-    
     @IBOutlet weak var profileName: UILabel!
     
     override func awakeFromNib() {

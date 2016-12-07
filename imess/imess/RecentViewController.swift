@@ -8,22 +8,18 @@
 
 import UIKit
 
-class RecentViewController: UIViewController {
-//    var actionButton: ActionButton!
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        actionButton = ActionButton(attachedToView: self.view)
-//        actionButton.action = { button in button.toggleMenu() }
-//        actionButton.setTitle("+", forState: UIControlState())
-//        
-//        actionButton.backgroundColor = UIColor(red: 238.0/255.0, green: 130.0/255.0, blue: 34.0/255.0, alpha:1.0)
-//    }
-    
+class RecentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        //self.navigationController?.isNavigationBarHidden = true
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
 }
