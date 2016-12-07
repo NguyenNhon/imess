@@ -45,6 +45,15 @@ class Group {
             _members = newValue
         }
     }
+    private var _timeSend: String = ""
+    var timeSend : String {
+        get {
+            return _timeSend
+        }
+        set {
+            _timeSend = newValue
+        }
+    }
     init() {
         _id = ""
         _title = ""

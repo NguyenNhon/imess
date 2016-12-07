@@ -1245,6 +1245,8 @@
                     <tabBarItem key="tabBarItem" title="Recent" image="ic_recent.png" id="7We-We-xPc"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="tfM-WL-igL" id="uzv-P2-Azj"/>
+                        <outlet property="tvGroupRecent" destination="bM2-x9-4uD" id="R93-1c-yWe"/>
+                        <segue destination="4CU-e2-SPd" kind="show" identifier="SegueRecentToChat" id="9Va-dz-vrC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dhc-ve-qwl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1290,6 +1292,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mB6-2f-rYL"/>
-        <segue reference="TAy-TG-ljn"/>
+        <segue reference="9Va-dz-vrC"/>
     </inferredMetricsTieBreakers>
 </document>

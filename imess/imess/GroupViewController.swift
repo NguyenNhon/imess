@@ -92,7 +92,7 @@ class GroupViewController: UIViewController, UITabBarDelegate, UITableViewDelega
             //cell.groupViewOfPicture.layer.cornerRadius = 30.0
             cell.groupName.text = self.groups[indexPath.row].title
             //let membersInGroup =
-            cell.groupInfo.text = "\(self.groups[indexPath.row].members.count) + members"
+            cell.groupInfo.text = "\(self.groups[indexPath.row].members.count) members"
         }
         return cell
     }

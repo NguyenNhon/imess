@@ -271,10 +271,10 @@
 		EFD31F6D1DC74AF5007D6DAA /* GroupViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EF4D212D1DF8607300E04547 /* AddFriendInGroup.swift */,
 				EF162E9A1DEDEB28004DBBF6 /* Cell */,
 				EF02CE511DC9C3D600A6ED31 /* GroupViewController.swift */,
 				EFBA4EC71DE864F5001CA9ED /* AddGroupViewController.swift */,
+				EF4D212D1DF8607300E04547 /* AddFriendInGroup.swift */,
 			);
 			name = GroupViewController;
 			sourceTree = "<group>";
