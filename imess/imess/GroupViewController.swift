@@ -32,7 +32,6 @@ class GroupViewController: UIViewController, UITabBarDelegate, UITableViewDelega
         actionButton.setTitle("+", forState: UIControlState())
         actionButton.backgroundColor = UIColor(red: 238.0/255.0, green: 130.0/255.0, blue: 34.0/255.0, alpha:1.0)
         actionButton.getButton().addTarget(self, action: #selector(FriendViewController.buttonTouchDown(_:)), for: .touchDown)
-        initGroups()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,7 +47,14 @@ class GroupViewController: UIViewController, UITabBarDelegate, UITableViewDelega
         self.navigationController?.pushViewController(addGroupView!, animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tvGroups.reloadData()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        initGroups()
         self.navigationController?.isNavigationBarHidden = true
     }
     

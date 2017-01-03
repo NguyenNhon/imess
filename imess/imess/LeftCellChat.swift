@@ -14,6 +14,7 @@ class LeftCellChat: UITableViewCell {
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var message: Label!
     @IBOutlet weak var viewMesage: UIView!
+    @IBOutlet weak var timeChat: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sn1-gi-ndq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sn1-gi-ndq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
                 <navigationController id="sn1-gi-ndq" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="384" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oK0-kb-34U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oK0-kb-34U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -40,13 +40,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="384" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l25-hr-ALs">
-                                <rect key="frame" x="168" y="419" width="48" height="30"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="signOutGoogleAccount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="10U-8y-9Fp"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jcB-nc-pcH">
                                 <rect key="frame" x="172" y="264" width="40" height="40"/>
                                 <constraints>
@@ -57,8 +50,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="l25-hr-ALs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1hg-6W-a0O"/>
-                            <constraint firstItem="l25-hr-ALs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="KMd-X3-DmD"/>
                             <constraint firstItem="jcB-nc-pcH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sw5-6S-XrQ"/>
                             <constraint firstItem="jcB-nc-pcH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="zNN-rP-1SG"/>
                         </constraints>
@@ -66,7 +57,6 @@
                     <navigationItem key="navigationItem" id="yKY-43-t5P"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="jcB-nc-pcH" id="L02-13-R8Y"/>
-                        <outlet property="signOutButton" destination="l25-hr-ALs" id="8qo-Ue-Z2Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -86,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t3O-jR-kAa">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="HDr-eD-Yr1">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -394,7 +384,6 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="xeb-mP-7VA">
                                             <connections>
-                                                <action selector="clickDoneAddGroup:" destination="uWU-fg-dH7" id="ElG-yT-QuY"/>
                                                 <segue destination="C0z-gJ-f55" kind="show" identifier="SegueDoneAddGroup" id="mB6-2f-rYL"/>
                                             </connections>
                                         </barButtonItem>
@@ -591,7 +580,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Br-7X-jV2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="AYH-45-Jwr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -779,6 +768,7 @@
                                                             <outlet property="message" destination="88s-az-XjJ" id="zfl-zu-huw"/>
                                                             <outlet property="profileName" destination="19O-MJ-XRV" id="Ktg-8w-7fQ"/>
                                                             <outlet property="profilePicture" destination="d9k-i7-2n1" id="Eyp-pO-OZz"/>
+                                                            <outlet property="timeChat" destination="Yjt-Q8-TZg" id="bGO-a4-YTa"/>
                                                             <outlet property="viewMesage" destination="3lo-LP-pJI" id="9gj-UB-WZY"/>
                                                         </connections>
                                                     </tableViewCell>
@@ -915,6 +905,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navigationMessage" destination="qcW-DR-B9i" id="pnL-IA-3tQ"/>
                         <outlet property="scrollView" destination="fma-Fa-nYj" id="hpP-ZM-X7f"/>
                         <outlet property="tfContentMessage" destination="9hZ-7j-CmL" id="Tpg-JK-euk"/>
                         <outlet property="tvChat" destination="t8r-X8-X7p" id="ACh-8V-cHU"/>
@@ -1266,7 +1257,7 @@
         <scene sceneID="mA3-mp-Fhb">
             <objects>
                 <tabBarController storyboardIdentifier="homeView" id="C0z-gJ-f55" customClass="HomeViewController" customModule="imess" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="OtC-WF-w4M">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="OtC-WF-w4M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1292,6 +1283,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mB6-2f-rYL"/>
-        <segue reference="9Va-dz-vrC"/>
+        <segue reference="TAy-TG-ljn"/>
     </inferredMetricsTieBreakers>
 </document>

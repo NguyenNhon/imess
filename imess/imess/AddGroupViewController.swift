@@ -20,7 +20,7 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tvFriends: UITableView!
     
     @IBAction func clickDoneAddGroup(_ sender: Any) {
-//        //check text field is null
+        //check text field is null
 //        if self.tfGroupName.text! == "" {
 //            let alert = UIAlertController(title: "Error", message: "Name group is nil", preferredStyle: .alert)
 //            let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (result) in
@@ -129,10 +129,12 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
                     //print("\(user.key) : \(user.value)")
                     refUsers.child("\(user.key)").child("chats").child("\(refId.key)").setValue(["id" : "\(refId.key)", "title" : "\(self.tfGroupName.text!)", "photoUrl": "photoGroup"])
                 }
+                self.performSegue(withIdentifier: "SegueDoneAddGroup", sender: sender)
             })
+        } else {
             return true
         }
-        return true
+        return false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

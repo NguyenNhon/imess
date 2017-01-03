@@ -15,7 +15,6 @@ import FirebaseDatabase
 
 class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
-    @IBOutlet weak var signOutButton: UIButton!
     var signInButton : GIDSignInButton!
     
     static var UserCurrent : FIRUser! = nil
@@ -24,16 +23,27 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBAction func signOutGoogleAccount(_ sender: Any) {
         if self.activityIndicatorView.isAnimating {
-            return
+            //return
         }
         GIDSignIn.sharedInstance().signOut()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        UIGraphicsBeginImageContext(self.view.frame.size);
+        let temp = UIImage(named: "background_login.jpg")
+        temp?.draw(in: self.view.bounds);
+        let imageCurrent = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: imageCurrent!)
         googleInit()
         activityIndicatorView.hidesWhenStopped = true
         activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         activityIndicatorView.center = view.center
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func googleInit() {
@@ -45,11 +55,22 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         }
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        signInButton = GIDSignInButton(frame: CGRect(x: 10, y: 10, width: 50, height: 30))
-        signInButton.center = view.center
-        view.addSubview(signInButton)
+        let btnSignIn = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        btnSignIn.center = view.center
+        btnSignIn.imageEdgeInsets = UIEdgeInsetsMake(2.0, 2.0, 2.0, 15.0)
+        btnSignIn.titleEdgeInsets = UIEdgeInsetsMake(2.0, 15.0, 2.0, 2.0)
+        btnSignIn.setImage(UIImage(named: "ic_google.png"), for: .normal)
+        btnSignIn.setTitle("Sign In With Google", for: .normal)
+        btnSignIn.tintColor = UIColor.white
+        btnSignIn.layer.borderWidth = 1.0
+        btnSignIn.addTarget(self, action: #selector(btnSignInPress), for: .touchUpInside)
+        view.addSubview(btnSignIn)
     }
-
+    
+    func btnSignInPress() {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,6 +83,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         self.activityIndicatorView.startAnimating()
         if error != nil {
             print(error)
+            self.activityIndicatorView.stopAnimating()
             return
         }
         
@@ -75,10 +97,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             }
             if user != nil {
                 ViewController.UserCurrent = user
-//                print("----------photoUrl: \((user?.photoURL?.path)!)")
-//                print("----------photoUrl: \(user?.photoURL?.path)")
-//                print("----------photoUrl: \((user?.photoURL?.absoluteString)!)")
-                //self.performSegue(withIdentifier: "loggedIn", sender: nil)
                 let uid = user?.uid as String!
                 let ref : FIRDatabaseReference = FIRDatabase.database().reference().child("users/\(uid!)")
                 ref.observeSingleEvent(of: FIRDataEventType.value
@@ -89,9 +107,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 })
                 self.activityIndicatorView.stopAnimating()
                 let homeView = self.storyboard?.instantiateViewController(withIdentifier: "homeView") as! UITabBarController
-                //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                //appDelegate.window?.rootViewController = homeView
-                
                 self.navigationController?.pushViewController(homeView, animated: true)
             }
         })

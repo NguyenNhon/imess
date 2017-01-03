@@ -14,6 +14,7 @@ import FirebaseAuth
 
 class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
     
+    @IBOutlet weak var navigationMessage: UINavigationItem!
     @IBOutlet weak var tvChat: UITableView!
     @IBOutlet weak var tfContentMessage: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -49,26 +50,6 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        let queue = OperationQueue()
-//        queue.addOperation({
-//            // do something in the background
-//            self.loadMessageFromDatabase()
-//            OperationQueue.main.addOperation( {
-//                if self.messages.count > 0 {
-//                    self.setBottomView()
-//                }
-//            })
-//        })
-    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        //self.setBottomView()
-        //self.showScrollOptions()
-    }
-    
     func showScrollOptions() {
         let sheet = UIAlertController(title: "Where to", message: "Would you like to scroll to bottom?", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Reload", style: UIAlertActionStyle.cancel, handler:{ (alert: UIAlertAction) in
@@ -93,20 +74,30 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
                 self.groupCurrent.id = self.groupChatId
                 self.groupCurrent.title = snapshot.childSnapshot(forPath: "title").value as! String
                 self.groupCurrent.photoUrl = snapshot.childSnapshot(forPath: "photoUrl").value as! String
-            }
-        })
-        FIRDatabase.database().reference().child("chats").child("\(groupChatId)").child("members").observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.value is NSNull {
-            } else {
-                let data = snapshot.children
-                while let rest = data.nextObject() as? FIRDataSnapshot {
-                    let email = (rest.value as? NSDictionary)?["email"] as! String
-                    let id = (rest.value as? NSDictionary)?["id"] as! String
-                    let name = (rest.value as? NSDictionary)?["name"] as! String
-                    let photoUrl = (rest.value as? NSDictionary)?["photoUrl"] as! String
-                    self.membersGroup.append(User(name: name, email: email, id: id, photoUrl: photoUrl))
-                }
-                self.groupCurrent.members = self.membersGroup
+                FIRDatabase.database().reference().child("chats").child("\(self.groupChatId)").child("members").observeSingleEvent(of: .value, with: { (snapshotTemp) in
+                    if snapshotTemp.value is NSNull {
+                    } else {
+                        let data = snapshotTemp.children
+                        while let rest = data.nextObject() as? FIRDataSnapshot {
+                            let email = (rest.value as? NSDictionary)?["email"] as! String
+                            let id = (rest.value as? NSDictionary)?["id"] as! String
+                            let name = (rest.value as? NSDictionary)?["name"] as! String
+                            let photoUrl = (rest.value as? NSDictionary)?["photoUrl"] as! String
+                            self.membersGroup.append(User(name: name, email: email, id: id, photoUrl: photoUrl))
+                        }
+                        self.groupCurrent.members = self.membersGroup
+                        if self.groupCurrent.members.count > 2 {
+                            self.navigationMessage.title = self.groupCurrent.title
+                        } else {
+                            for item in self.groupCurrent.members {
+                                let emailCurrent = (ViewController.UserCurrent.email)!
+                                if item.email != emailCurrent {
+                                    self.navigationMessage.title = item.name
+                                }
+                            }
+                        }
+                    }
+                })
             }
         })
     }
@@ -174,9 +165,10 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
         let defauftTimeZoneStr = formatter.string(from: Date())
         messageSend.timeSend = defauftTimeZoneStr
+        let timeStamp = Int64((NSDate().timeIntervalSince1970)*1000)
         let ref = FIRDatabase.database().reference().child("messages").child("\(self.groupChatId)").childByAutoId()
         //id, message, timeSend, owner, viewers
-        ref.setValue(["id": "\(ref.key)", "message": "\((self.tfContentMessage.text)!)", "timeSend": defauftTimeZoneStr, "owner": ownerMessage, "viewers": viewerMessage])
+        ref.setValue(["id": "\(ref.key)", "message": "\((self.tfContentMessage.text)!)", "timeSend": defauftTimeZoneStr, "timeStamp": timeStamp, "owner": ownerMessage, "viewers": viewerMessage])
         self.messages.append(Message(newId: messageSend.id, newMessage: messageSend.message, newTimeSend: messageSend.timeSend, newOwner: messageSend.owner, newViewers: messageSend.viewers))
         UIView.setAnimationsEnabled(false)
         self.tvChat.beginUpdates()
@@ -224,6 +216,26 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
             let cell = self.tvChat.dequeueReusableCell(withIdentifier: "LeftCellChat") as! LeftCellChat
             if  self.messages.count > indexPath.row {
                 cell.profileName.text = messages[indexPath.row].owner.name
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
+                let dateNow = Date()
+                let dateChat = formatter.date(from: messages[indexPath.row].timeSend)
+                let dayNow = Calendar(identifier: .gregorian).component(.day, from: dateNow)
+                let dayChat = Calendar(identifier: .gregorian).component(.day, from: dateChat!)
+                let monthNow = Calendar(identifier: .gregorian).component(.day, from: dateNow)
+                let monthChat = Calendar(identifier: .gregorian).component(.day, from: dateChat!)
+                let yearNow = Calendar(identifier: .gregorian).component(.day, from: dateNow)
+                let yearChat = Calendar(identifier: .gregorian).component(.day, from: dateChat!)
+                
+                if dayNow == dayChat && monthNow == monthChat && yearNow == yearChat {
+                    let timeChatSendFormatter = DateFormatter()
+                    timeChatSendFormatter.dateFormat = "HH:mm"
+                    cell.timeChat.text = timeChatSendFormatter.string(from: dateChat!)
+                } else {
+                    let timeChatSendFormatter = DateFormatter()
+                    timeChatSendFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                    cell.timeChat.text = timeChatSendFormatter.string(from: dateChat!)
+                }
                 cell.message.text = messages[indexPath.row].message
                 cell.message.layer.masksToBounds = true
                 cell.viewMesage.layer.cornerRadius = 20.0
@@ -239,6 +251,26 @@ class ChatFriendController : UIViewController, UITableViewDelegate, UITableViewD
         let cell = self.tvChat.dequeueReusableCell(withIdentifier: "RightCellChat") as! RightCellChat
         if  self.messages.count > indexPath.row{
             cell.message.text = messages[indexPath.row].message
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
+            let dateNow = Date()
+            let dateChat = formatter.date(from: messages[indexPath.row].timeSend)
+            let dayNow = Calendar(identifier: .gregorian).component(.day, from: dateNow)
+            let dayChat = Calendar(identifier: .gregorian).component(.day, from: dateChat!)
+            let monthNow = Calendar(identifier: .gregorian).component(.day, from: dateNow)
+            let monthChat = Calendar(identifier: .gregorian).component(.day, from: dateChat!)
+            let yearNow = Calendar(identifier: .gregorian).component(.day, from: dateNow)
+            let yearChat = Calendar(identifier: .gregorian).component(.day, from: dateChat!)
+            
+            if dayNow == dayChat && monthNow == monthChat && yearNow == yearChat {
+                let timeChatSendFormatter = DateFormatter()
+                timeChatSendFormatter.dateFormat = "HH:mm"
+                cell.timeSend.text = timeChatSendFormatter.string(from: dateChat!)
+            } else {
+                let timeChatSendFormatter = DateFormatter()
+                timeChatSendFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                cell.timeSend.text = timeChatSendFormatter.string(from: dateChat!)
+            }
             cell.message.layer.masksToBounds = true
             cell.viewMessage.layer.cornerRadius = 20.0
         }
